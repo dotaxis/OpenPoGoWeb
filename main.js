@@ -497,6 +497,7 @@ function buildMenu(user_id, menu) {
     sortButtons += '<div class="chip"><a href="javascript:sortAndShowBagPokemon(\'iv\',' + user_id + ')">IV</a></div>';
     sortButtons += '<div class="chip"><a href="javascript:sortAndShowBagPokemon(\'name\',' + user_id + ')">Name</a></div>';
     sortButtons += '<div class="chip"><a href="javascript:sortAndShowBagPokemon(\'id\',' + user_id + ')">ID</a></div>';
+    sortButtons += '<div class="chip"><a href="javascript:sortAndShowBagPokemon(\'time\',' + user_id + ')">Time</a></div>';
     sortButtons += '</div>';
 
     document.getElementById('sortButtons').innerHTML = sortButtons;
@@ -596,6 +597,14 @@ function sortAndShowBagPokemon(sortOn, user_id) {
       sortedPokemon.sort(function(a, b){
         if (a.iv > b.iv) return -1
         if(a.iv < b.iv) return 1
+        return 0
+      });
+      break;
+      break;
+    case 'time':
+      sortedPokemon.sort(function(a, b){
+        if (a.creation_time_ms > b.creation_time_ms) return -1
+        if(a.creation_time_ms < b.creation_time_ms) return 1
         return 0
       });
       break;
